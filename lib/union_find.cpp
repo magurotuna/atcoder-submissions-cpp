@@ -2,22 +2,22 @@
 #include <vector>
 
 class UnionFind {
-  using ll = long long int;
+  using i64 = long long int;
 
 private:
-  std::vector<long long int> parents;
-  std::vector<long long int> sizes;
+  std::vector<i64> parents;
+  std::vector<i64> sizes;
 
 public:
-  UnionFind(ll sz) {
+  UnionFind(i64 sz) {
     parents.resize(sz);
-    for (ll i = 0; i < sz; ++i) {
+    for (i64 i = 0; i < sz; ++i) {
       parents[i] = i;
     }
     sizes.assign(sz, 1LL);
   };
 
-  bool merge(ll x, ll y) {
+  bool merge(i64 x, i64 y) {
     x = root(x);
     y = root(y);
     if (x == y)
@@ -29,19 +29,19 @@ public:
     return true;
   };
 
-  ll root(ll x) {
+  i64 root(i64 x) {
     while (parents[x] != x) {
-      ll grand_par = parents[parents[x]];
+      i64 grand_par = parents[parents[x]];
       parents[x] = grand_par;
       x = parents[x];
     }
     return x;
   };
 
-  bool is_same(ll x, ll y) { return root(x) == root(y); };
+  bool is_same(i64 x, i64 y) { return root(x) == root(y); };
 
-  ll size(ll x) {
-    ll root = this->root(x);
+  i64 size(i64 x) {
+    i64 root = this->root(x);
     return sizes[root];
   };
 };
