@@ -1,6 +1,9 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
+#include <stdint.h>
 #include <string>
+#include <tuple>
 #include <vector>
 
 using namespace std;
